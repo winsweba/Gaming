@@ -19,11 +19,6 @@ public class Player : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
     }
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
@@ -60,14 +55,17 @@ public class Player : MonoBehaviour
 
             if(score >= winingPoint)
             {
+                LevelControlScript.instance.youWin();
                 print("Levl Complete");
-                winText.SetActive(true);
+                //winText.SetActive(true);
+                
             }
         }
         else if(collision.gameObject.tag == "danger")
         {
             Instantiate(deadEffect, transform.position, Quaternion.identity);
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            // SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            LevelControlScript.instance.youLose();
         }
     }
 }
