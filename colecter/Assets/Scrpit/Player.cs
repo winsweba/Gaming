@@ -63,6 +63,7 @@ public class Player : MonoBehaviour
         }
         else if(collision.gameObject.tag == "danger")
         {
+            Destroy(gameObject);
             Instantiate(deadEffect, transform.position, Quaternion.identity);
             // SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
             LevelControlScript.instance.youLose();
